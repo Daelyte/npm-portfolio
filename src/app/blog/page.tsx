@@ -6,22 +6,22 @@ import { Metadata } from "next";
 const url = process.env.SITE_URL!;
 
 export const metadata: Metadata = {
-  title: "Coderamrin Blog",
+  title: "Technical Blog - James G.",
   description:
-    "Learn about Next.js, React.js and all the other frontend technologies",
+    "Real-world technical articles on React, TypeScript, performance optimization, and production debugging. No fluff, just code.",
   openGraph: {
     type: "website",
-    title: "Coderamrin Blog",
+    title: "Technical Blog - James G.",
     description:
-      "Learn about Next.js, React.js and all the other frontend technologies.",
+      "Real-world technical articles on React, TypeScript, performance optimization, and production debugging.",
     images: `${url}/images/og-image.jpg`,
     url,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Coderamrin Blog",
+    title: "Technical Blog - James G.",
     description:
-      "Learn about Next.js, React.js and all the other frontend technologies.",
+      "Real-world technical articles on React, TypeScript, performance optimization, and production debugging.",
     images: `${url}/images/og-image.jpg`,
   },
 
@@ -45,46 +45,53 @@ const BlogArchive = () => {
   }
 
   return (
-    <main className="px-5 flex-1">
-      <section className="pt-16 max-w-[815px] mx-auto">
-      <div className="pb-8">
-        <h2 className="text-3xl font-bold text-gray-700">Blog Archive</h2>
-        <p className="py-3 text-gray-600">Explore the archive of past blog posts, covering a wide range of topics and insights.</p>
-
-      </div>
-        
-        <div className="">
-          {posts.map((item: any, i) => {
-            return (
-              <Link
-                href={`/blog/${item.slug}`}
-                key={i}
-                className="block w-full mb-8 p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100"
-              >
-                <div className="relative">
-                  {/* <span className="absolute -top-8 -right-8 text-white btn-bg text-sm px-2 py-1 rounded">
-                  dev.to
-                </span> */}
-                  <h3 className="text-2xl font-medium pb-2 text-gray-800">
-                    {item.title}
-                  </h3>
-                  <div className="flex gap-2 pb-2">
-                    <p className="text-slate-600 text-sm">
-                      Published: {item.published_at}
-                    </p>
-                    <p className="text-slate-600 text-sm">
-                      {item.edited_at ? `Updated: ${item.edited_at}` : "-"}
+    <main className="min-h-screen py-16 px-4 flex-1">
+      <div className="max-w-4xl mx-auto">
+        {/* Styled container background */}
+        <div className="bg-gradient-to-br from-slate-900/60 to-slate-800/40 backdrop-blur-sm border-2 border-slate-700/50 rounded-2xl shadow-2xl p-8 md:p-12">
+          {/* Header */}
+          <div className="mb-12 pb-8 border-b border-slate-700/50">
+            <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-purple-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent">
+              Technical Articles
+            </h1>
+            <p className="text-gray-300 text-lg">
+              Real problems, real solutions, real code. Production debugging, performance optimization, and lessons learned building with AI assistance.
+            </p>
+          </div>
+          
+          {/* Blog posts list */}
+          <div className="space-y-6">
+            {posts.map((item: any, i) => {
+              return (
+                <Link
+                  href={`/blog/${item.slug}`}
+                  key={i}
+                  className="block w-full p-6 bg-slate-800/40 border-2 border-slate-700/40 rounded-xl hover:border-slate-600/60 hover:bg-slate-800/60 transition-all duration-300 group"
+                >
+                  <div className="relative">
+                    <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-300 group-hover:to-cyan-300 group-hover:bg-clip-text transition-all">
+                      {item.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      <span className="text-xs px-3 py-1.5 rounded-md bg-slate-700/50 text-slate-300 border border-slate-600/50">
+                        Published: {item.published_at}
+                      </span>
+                      {item.edited_at && (
+                        <span className="text-xs px-3 py-1.5 rounded-md bg-slate-700/50 text-slate-300 border border-slate-600/50">
+                          Updated: {item.edited_at}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-gray-300 leading-relaxed text-base">
+                      {item.description}
                     </p>
                   </div>
-                  <p className="py-2 text-gray-700 leading-5 text-base">
-                    {item.description}
-                  </p>
-                </div>
-              </Link>
-            );
-          })}
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      </section>
+      </div>
     </main>
   );
 };

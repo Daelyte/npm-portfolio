@@ -106,21 +106,31 @@ export default async function Post({ params }: Props) {
   const content = await markdownToHtml(post.content || "");
 
   return (
-    <>
-      <article className="mx-4 prose prose-lg md:prose-xl md:mx-auto mt-16">
-        {/* <article class="prose md:prose-lg lg:prose-xl">{{ markdown }}</article> */}
-        <div className="mb-20">
-          <h1 className="!mb-0 !leading-tight text-gray-800">{post.title}</h1>
-          <p className="text-gray-600 !mt-2">
-            {" "}
-            <span className="text-gray-900">Published:</span>{" "}
-            {post.published_at} <span className="text-gray-900">Edited</span>{" "}
-            {post.edited_at}{" "}
-          </p>
-        </div>
+    <div className="min-h-screen py-16 px-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Styled container background */}
+        <div className="bg-gradient-to-br from-slate-900/60 to-slate-800/40 backdrop-blur-sm border-2 border-slate-700/50 rounded-2xl shadow-2xl p-8 md:p-12">
+          <article className="prose prose-lg md:prose-xl prose-invert max-w-none">
+            {/* Header section */}
+            <div className="mb-12 pb-8 border-b border-slate-700/50">
+              <h1 className="!mb-4 !leading-tight text-white">{post.title}</h1>
+              <div className="flex items-center gap-3 text-sm">
+                <span className="px-3 py-1.5 rounded-md bg-slate-800/60 text-slate-300 border border-slate-700/50">
+                  Published: {post.published_at}
+                </span>
+                {post.edited_at && (
+                  <span className="px-3 py-1.5 rounded-md bg-slate-800/60 text-slate-300 border border-slate-700/50">
+                    Edited: {post.edited_at}
+                  </span>
+                )}
+              </div>
+            </div>
 
-        <div dangerouslySetInnerHTML={{ __html: content }}></div>
-      </article>
-    </>
+            {/* Content */}
+            <div className="text-gray-100 leading-relaxed" dangerouslySetInnerHTML={{ __html: content }}></div>
+          </article>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -11,23 +11,25 @@ interface BlogPost {
 }
 
 export default function BlogList({ posts }: { posts: BlogPost[] }) {
-  const gradients = [
-    "from-purple-500/20 via-purple-500/10 to-transparent",
-    "from-cyan-500/20 via-cyan-500/10 to-transparent",
-    "from-pink-500/20 via-pink-500/10 to-transparent",
-    "from-blue-500/20 via-blue-500/10 to-transparent",
-  ];
-  const borderColors = [
-    "border-purple-400/30",
-    "border-cyan-400/30",
-    "border-pink-400/30",
-    "border-blue-400/30",
-  ];
-  const hoverGlow = [
-    "0 0 40px rgba(168, 85, 247, 0.4)",
-    "0 0 40px rgba(6, 182, 212, 0.4)",
-    "0 0 40px rgba(236, 72, 153, 0.4)",
-    "0 0 40px rgba(59, 130, 246, 0.4)",
+  const cardStyles = [
+    {
+      bg: "bg-gradient-to-br from-purple-900/40 to-purple-800/20",
+      border: "border-purple-400/40",
+      accent: "text-purple-300",
+      hover: "0 0 40px rgba(168, 85, 247, 0.5)"
+    },
+    {
+      bg: "bg-gradient-to-br from-cyan-900/40 to-cyan-800/20",
+      border: "border-cyan-400/40",
+      accent: "text-cyan-300",
+      hover: "0 0 40px rgba(6, 182, 212, 0.5)"
+    },
+    {
+      bg: "bg-gradient-to-br from-pink-900/40 to-pink-800/20",
+      border: "border-pink-400/40",
+      accent: "text-pink-300",
+      hover: "0 0 40px rgba(236, 72, 153, 0.5)"
+    },
   ];
 
   return (
@@ -36,15 +38,17 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
+        className="mb-12"
       >
         <motion.h2 
-          className="text-3xl font-bold mb-8 bg-gradient-to-r from-purple-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(139,92,246,0.5)]"
+          className="text-4xl font-bold mb-3 text-white"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Latest Posts
+          Technical Articles
         </motion.h2>
+        <p className="text-gray-400 text-lg">Real problems, real solutions, real code.</p>
       </motion.div>
       
       <div className="container space-y-6">
@@ -57,68 +61,41 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
           >
             <Link href={`/blog/${item.slug}`}>
               <motion.div
-                className={`relative block w-full p-6 backdrop-blur-md bg-gradient-to-br ${gradients[i % 4]} border-2 ${borderColors[i % 4]} rounded-2xl shadow-2xl overflow-hidden group cursor-pointer`}
+                className={`relative block w-full p-8 backdrop-blur-sm ${cardStyles[i % 3].bg} border-2 ${cardStyles[i % 3].border} rounded-xl shadow-xl overflow-hidden group cursor-pointer hover:border-opacity-60 transition-all`}
                 whileHover={{ 
-                  scale: 1.02,
-                  boxShadow: hoverGlow[i % 4],
+                  y: -4,
+                  boxShadow: cardStyles[i % 3].hover,
                 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
               >
-                {/* Animated gradient overlay on hover */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-cyan-600/0 to-pink-600/0 opacity-0 group-hover:opacity-10"
-                  transition={{ duration: 0.3 }}
-                />
-                
-                {/* Glow effect on left border */}
-                <motion.div
-                  className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-cyan-500 to-pink-500"
-                  initial={{ opacity: 0.3 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
+                {/* Accent bar on left */}
+                <div className={`absolute left-0 top-0 bottom-0 w-1 ${cardStyles[i % 3].border.replace('border-', 'bg-')} group-hover:w-2 transition-all duration-300`} />
                 
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-bold pb-3 text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-300 group-hover:via-cyan-300 group-hover:to-pink-300 group-hover:bg-clip-text transition-all duration-300">
+                  {/* Title */}
+                  <h3 className="text-2xl font-bold mb-4 text-white leading-tight group-hover:text-white/90 transition-colors">
                     {item.title}
                   </h3>
                   
-                  <div className="flex flex-wrap gap-3 pb-3">
-                    <motion.span 
-                      className="text-cyan-200 text-sm font-medium px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-cyan-400/30"
-                      whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.15)" }}
-                    >
-                      📅 Published: {item.published_at}
-                    </motion.span>
-                    {item.edited_at && (
-                      <motion.span 
-                        className="text-pink-200 text-sm font-medium px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-pink-400/30"
-                        whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.15)" }}
-                      >
-                        ✏️ Updated: {item.edited_at}
-                      </motion.span>
-                    )}
+                  {/* Date badge */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className={`text-xs font-semibold px-3 py-1.5 rounded-md bg-white/5 ${cardStyles[i % 3].accent} border ${cardStyles[i % 3].border}`}>
+                      {item.published_at}
+                    </span>
                   </div>
                   
-                  <p className="py-2 text-white/80 leading-relaxed text-base drop-shadow-[0_0_5px_rgba(255,255,255,0.2)] group-hover:text-white transition-colors duration-300">
+                  {/* Description */}
+                  <p className="text-gray-300 leading-relaxed text-base mb-4">
                     {item.description}
                   </p>
                   
-                  {/* Read more indicator */}
-                  <motion.div 
-                    className="flex items-center gap-2 mt-4 text-cyan-300 font-medium"
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                  >
-                    <span>Read more</span>
-                    <motion.span
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      →
-                    </motion.span>
-                  </motion.div>
+                  {/* Read more */}
+                  <div className={`flex items-center gap-2 font-medium ${cardStyles[i % 3].accent} group-hover:gap-3 transition-all`}>
+                    <span className="text-sm">Read article</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
               </motion.div>
             </Link>

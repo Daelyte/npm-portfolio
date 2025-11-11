@@ -4,6 +4,13 @@ import { useEffect, useState } from "react";
 
 const AnimatedBackground = () => {
   const [stars, setStars] = useState<{ x: number; y: number; size: number; delay: number }[]>([]);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setWindowWidth(window.innerWidth);
+    }
+  }, []);
 
   useEffect(() => {
     // Generate random stars
@@ -120,7 +127,7 @@ const AnimatedBackground = () => {
         className="absolute h-[2px] w-[100px] bg-gradient-to-r from-transparent via-white to-transparent"
         style={{ top: "20%", left: "-100px" }}
         animate={{
-          x: [0, window.innerWidth + 200],
+          x: [0, windowWidth + 200],
           y: [0, 200],
         }}
         transition={{
@@ -135,7 +142,7 @@ const AnimatedBackground = () => {
         className="absolute h-[2px] w-[80px] bg-gradient-to-r from-transparent via-cyan-300 to-transparent"
         style={{ top: "60%", left: "-80px" }}
         animate={{
-          x: [0, window.innerWidth + 200],
+          x: [0, windowWidth + 200],
           y: [0, 150],
         }}
         transition={{

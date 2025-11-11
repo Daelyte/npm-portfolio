@@ -74,6 +74,7 @@ const Contact = () => {
                 value={name}
                 onChange={handleChange}
                 required
+                suppressHydrationWarning
               />
             </div>
             <div className="mb-3">
@@ -88,6 +89,7 @@ const Contact = () => {
                 value={email}
                 onChange={handleChange}
                 required
+                suppressHydrationWarning
               />
             </div>
             <div className="mb-3">

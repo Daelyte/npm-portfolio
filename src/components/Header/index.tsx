@@ -30,7 +30,7 @@ const Header = () => {
                   <Link
                     className="relative block"
                     href={item.link || "/"}
-                    target={item.external ? "_blank" : "_self"}
+                    target="_self"
                   >
                     <motion.span
                       className={`relative px-4 py-2 rounded-lg font-medium text-base capitalize inline-block ${

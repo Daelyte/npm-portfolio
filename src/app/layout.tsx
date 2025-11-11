@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ToastContext from "@/context/ToastContext";
+import AnimatedBackground from "@/components/AnimatedBackground";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className}  flex flex-col min-h-screen dark `}>
+        <AnimatedBackground />
         <Header />
         <ToastContext />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

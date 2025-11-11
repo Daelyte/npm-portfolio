@@ -3,7 +3,7 @@ import { SocialLink } from "@/types/socialLinks";
 const sociallinks: SocialLink[] = [
   {
     name: "Github",
-    url: "https://github.com/coderamrin",
+    url: "https://github.com/Daelyte",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ const sociallinks: SocialLink[] = [
   },
   {
     name: "Twitter",
-    url: "https://twitter.com/coderamrin",
+    url: "https://x.com/CeresExe",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ const sociallinks: SocialLink[] = [
   },
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/coderamrin/",
+    url: "https://www.linkedin.com/in/jgtoronto/",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

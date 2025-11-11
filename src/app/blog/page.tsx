@@ -45,7 +45,7 @@ const BlogArchive = () => {
   }
 
   return (
-    <main className="min-h-screen py-16 px-4 flex-1">
+    <main className="min-h-screen pt-64 md:pt-72 pb-16 px-4 flex-1">
       <div className="max-w-4xl mx-auto">
         {/* Styled container background */}
         <div className="bg-gradient-to-br from-slate-900/60 to-slate-800/40 backdrop-blur-sm border-2 border-slate-700/50 rounded-2xl shadow-2xl p-8 md:p-12">

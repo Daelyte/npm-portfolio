@@ -30,7 +30,7 @@ const Hero = () => {
 
   return (
     <motion.section
-      className="pt-16 md:w-[800px]"
+      className="pt-48 md:pt-56 md:w-[800px]"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

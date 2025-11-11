@@ -55,8 +55,8 @@ const Contact = () => {
   };
 
   return (
-    <main className="px-5 max-w-[1000px] mx-auto flex-1">
-      <section className="py-20">
+    <main className="px-5 max-w-[1000px] mx-auto flex-1 pt-48 md:pt-56">
+      <section className="pb-20">
         {/* Page Title */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-4 inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-500 rounded-2xl text-white transition-all duration-300 hover:shadow-[0_10px_40px_rgba(239,68,68,0.6)] cursor-default">

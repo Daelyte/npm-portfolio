@@ -51,6 +51,21 @@ const Resume = () => {
       tech: ["AI Tools", "PowerShell", "Git", "CI/CD", "Automation"],
     },
     {
+      title: "Programmatic Advertising Trading Specialist",
+      company: "Publicis",
+      period: "Dates not specified",
+      status: "Past",
+      description:
+        "Programmatic media trading across Google 360 (DV360), The Trade Desk, and AWS-backed workflows for FCA brands (Dodge, Jeep, Ram).",
+      achievements: [
+        "Optimized pacing, bidding, and audience strategies to hit CPA/ROAS and reach goals",
+        "Managed brand safety, viewability, and fraud prevention standards across platforms",
+        "Built reporting workflows leveraging AWS for campaign performance insights",
+        "Coordinated with account and creative teams for flighting, QA, and measurement plans",
+      ],
+      tech: ["Google 360 (DV360)", "The Trade Desk", "AWS", "Brand Safety", "Attribution"],
+    },
+    {
       title: "Technical Sales & Client Success",
       company: "Career Transition",
       period: "2024 - Present",
@@ -68,6 +83,12 @@ const Resume = () => {
   ];
 
   const education = [
+    {
+      degree: "Business Administration Diploma",
+      institution: "George Brown College",
+      period: "2011 - 2014",
+      focus: "Major in Marketing",
+    },
     {
       degree: "Self-Taught Full Stack Development",
       institution: "Various Online Platforms",
@@ -150,13 +171,15 @@ const Resume = () => {
         return "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200";
       case "Ongoing":
         return "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-200";
+      case "Past":
+        return "bg-slate-100 text-slate-800 dark:bg-slate-900/30 dark:text-slate-200";
       default:
         return "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-200";
     }
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 px-4 md:px-6 lg:px-8 py-8 animate-fade-in">
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 px-4 md:px-6 lg:px-8 pt-64 md:pt-72 pb-8 animate-fade-in">
       <div className="max-w-5xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-purple-200/50 dark:border-purple-700/50">

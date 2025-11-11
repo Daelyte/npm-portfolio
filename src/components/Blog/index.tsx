@@ -16,7 +16,7 @@ const Blog = async () => {
   }
 
   return (
-    <section className="pt-16">
+    <section className="pt-60 md:pt-64">
       <BlogList posts={posts.slice(0, 4)} />
     </section>
   );

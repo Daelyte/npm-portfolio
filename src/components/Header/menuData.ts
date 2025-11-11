@@ -4,6 +4,10 @@ const data = [
     link: "/",
   },
   {
+    name: "About",
+    link: "/about",
+  },
+  {
     name: "Blog",
     link: "/blog",
   },
@@ -17,8 +21,7 @@ const data = [
   },
   {
     name: "Resume",
-    link: process.env.NEXT_PUBLIC_RESUME_URL,
-    external: true,
+    link: "/resume",
   },
 ];
 

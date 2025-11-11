@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Blog from "../components/Blog";
 import Hero from "../components/Hero";
 
-const url = process.env.SITE_URL;
+const url = process.env.NEXT_PUBLIC_SITE_URL || '';
 
 export const metadata: Metadata = {
   title: "Amrin",
@@ -13,19 +13,19 @@ export const metadata: Metadata = {
     title: "Amrin",
     description:
       "A Frontend Developer who love to build beautiful and interactive websites.",
-    images: `${url}/images/og-image.jpg`,
-    url: process.env.SITE_URL!,
+    images: '/images/og-image.jpg',
+    ...(url ? { url } : {}),
   },
   twitter: {
     card: "summary_large_image",
     title: "Amrin",
     description:
       "A Frontend Developer who love to build beautiful and interactive websites.",
-    images: `${url}/images/og-image.jpg`,
+    images: '/images/og-image.jpg',
   },
 
   alternates: {
-    canonical: process.env.SITE_URL!,
+    ...(url ? { canonical: url } : {}),
   },
 
   // icons: {

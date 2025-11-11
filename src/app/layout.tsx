@@ -11,10 +11,10 @@ import ScrollProgress from "@/components/ScrollProgress";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const url = process.env.SITE_URL;
+const url = process.env.NEXT_PUBLIC_SITE_URL || '';
 
 export const metadata = {
-  metadataBase: new URL(url || 'https://framearchitech.com'),
+  ...(url ? { metadataBase: new URL(url) } : {}),
   title: {
     default: "JMFG | James M. F. Greer - Portfolio & Creative Works",
     template: "%s | JMFG"
@@ -38,13 +38,13 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: url,
+    ...(url ? { url } : {}),
     title: "JMFG | James M. F. Greer - Portfolio & Creative Works",
     description: "Creative technologist, developer, and storyteller. Explore interactive experiences, technical projects, and narrative works.",
     siteName: "JMFG",
     images: [
       {
-        url: `${url}/images/og-image.png`,
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "JMFG Portfolio",
@@ -56,17 +56,17 @@ export const metadata = {
     title: "JMFG | James M. F. Greer - Portfolio & Creative Works",
     description: "Creative technologist, developer, and storyteller. Explore interactive experiences, technical projects, and narrative works.",
     creator: "@jamesgreer",
-    images: [`${url}/images/og-image.png`],
+    images: ['/images/og-image.jpg'],
   },
   icons: {
-    shortcut: `${url}/images/icons/favicon-16x16.png`,
-    apple: `${url}/images/icons/apple-touch-icon.png`,
+    shortcut: '/images/icons/favicon-16x16.png',
+    apple: '/images/icons/apple-touch-icon.png',
     icon: [
-      { url: `${url}/images/icons/favicon-16x16.png`, sizes: "16x16", type: "image/png" },
-      { url: `${url}/images/icons/favicon-32x32.png`, sizes: "32x32", type: "image/png" },
+      { url: '/images/icons/favicon-16x16.png', sizes: "16x16", type: "image/png" },
+      { url: '/images/icons/favicon-32x32.png', sizes: "32x32", type: "image/png" },
     ],
   },
-  manifest: `${url}/site.webmanifest`,
+  manifest: '/site.webmanifest',
   verification: {
     google: 'your-google-verification-code',
   },
